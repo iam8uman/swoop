@@ -113,6 +113,8 @@ To develop in Xcode, run `open Package.swift`. URL schemes and launch at login n
 
 Releases are automatic. Bump `CFBundleShortVersionString` in `Resources/Info.plist` and push to `main`, and GitHub Actions tests, builds and smoke-tests a universal `Swoop.zip`, then publishes it as release `v<version>`. Pushing a `v*` tag does the same.
 
+The product requirements, design decisions and roadmap are in [docs/PRD.md](docs/PRD.md).
+
 ### Project layout
 
 ```
