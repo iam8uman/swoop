@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(CoreGraphics)
+import CoreGraphics
+#endif
 
 public enum ActionCategory: String, CaseIterable, Sendable {
     case general = "General"

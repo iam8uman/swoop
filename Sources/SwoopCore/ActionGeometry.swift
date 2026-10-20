@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(CoreGraphics)
+import CoreGraphics
+#endif
 
 /// Works out where a window should go for an action. Pure math, screen space (top-left origin).
 public struct ActionGeometry: Sendable {
