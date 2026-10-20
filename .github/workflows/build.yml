@@ -44,6 +44,33 @@ jobs:
           if [[ "$GITHUB_REF_TYPE" != "tag" ]]; then VERSION="0.0.0-dev"; fi
           VERSION="$VERSION" BUILD_NUMBER="$GITHUB_RUN_NUMBER" ./scripts/build-app.sh
 
+      - name: Smoke test the app
+        run: |
+          set -euo pipefail
+          APP=build/Swoop.app
+          BIN=$APP/Contents/MacOS/Swoop
+          plutil -lint $APP/Contents/Info.plist
+          echo "Architectures: $(lipo -archs $BIN)"
+          lipo -archs $BIN | grep -q arm64
+          lipo -archs $BIN | grep -q x86_64
+          codesign --verify --deep --strict $APP
+          $BIN --version
+          COUNT=$($BIN --list | grep -c '^swoop://')
+          echo "swoop:// commands: $COUNT"
+          test "$COUNT" -gt 60
+          # Launch the real app and make sure it stays up (no Accessibility on CI, so it waits for permission).
+          $BIN > launch.log 2>&1 &
+          PID=$!
+          sleep 10
+          if kill -0 $PID 2>/dev/null; then
+            echo "Swoop launched and is still running after 10s"
+            kill $PID
+          else
+            echo "::error title=Launch crash::Swoop exited during launch: $(tail -20 launch.log | tr '\n' ' ')"
+            ls -t ~/Library/Logs/DiagnosticReports 2>/dev/null | head -3
+            exit 1
+          fi
+
       - name: Zip
         run: |
           cd build
