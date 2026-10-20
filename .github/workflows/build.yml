@@ -24,7 +24,7 @@ jobs:
           set -o pipefail
           swift build --build-tests 2>&1 | tee compile.log || {
             # Report every compiler error in one annotation so it's readable from the API.
-            grep -E "error:" compile.log | sed "s#$GITHUB_WORKSPACE/##" | sort -u | head -80 > errors.txt
+            grep -E "^[^ ].*error:" compile.log | sed "s#$GITHUB_WORKSPACE/##" | sort -u | head -80 > errors.txt
             echo "::error title=Compile errors::$(awk '{gsub(/%/,"%25"); printf "%s%%0A", $0}' errors.txt)"
             exit 1
           }

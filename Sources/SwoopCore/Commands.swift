@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(CoreGraphics)
+import CoreGraphics
+#endif
 
 /// Something Swoop can be told to do from outside: a `swoop://` URL, a shell script or Shortcuts.
 public enum SwoopCommand: Equatable, Sendable {

@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(CoreGraphics)
+import CoreGraphics
+#endif
 
 /// The nine zones of the radial menu.
 public enum RadialDirection: String, Codable, CaseIterable, Identifiable, Sendable {

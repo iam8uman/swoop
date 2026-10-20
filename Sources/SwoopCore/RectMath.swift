@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(CoreGraphics)
+import CoreGraphics
+#endif
 
 // All SwoopCore geometry uses "screen space" with the origin at the top-left of the
 // main display and y growing downward. That is the coordinate system of the macOS
