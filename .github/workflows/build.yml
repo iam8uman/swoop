@@ -1,0 +1,50 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: swift --version
+
+      - name: Unit tests
+        run: swift test
+
+      - name: Build Swoop.app
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          if [[ "$GITHUB_REF_TYPE" != "tag" ]]; then VERSION="0.0.0-dev"; fi
+          VERSION="$VERSION" BUILD_NUMBER="$GITHUB_RUN_NUMBER" ./scripts/build-app.sh
+
+      - name: Zip
+        run: |
+          cd build
+          ditto -c -k --sequesterRsrc --keepParent Swoop.app Swoop.zip
+          shasum -a 256 Swoop.zip | tee Swoop.zip.sha256
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Swoop
+          path: build/Swoop.zip
+
+      - name: Publish release
+        if: github.ref_type == 'tag'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            build/Swoop.zip
+            build/Swoop.zip.sha256
+          generate_release_notes: true
