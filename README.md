@@ -97,7 +97,7 @@ open build/Swoop.app
 
 To develop in Xcode, run `open Package.swift`. URL schemes and launch at login need the bundled app from `build-app.sh`.
 
-Releases are automatic: push a tag like `v1.0.1`, and GitHub Actions builds a universal `Swoop.zip` and attaches it to the release.
+Releases are automatic. Bump `CFBundleShortVersionString` in `Resources/Info.plist` and push to `main`, and GitHub Actions tests, builds and smoke-tests a universal `Swoop.zip`, then publishes it as release `v<version>`. Pushing a `v*` tag does the same.
 
 ### Project layout
 
