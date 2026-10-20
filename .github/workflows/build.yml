@@ -112,4 +112,4 @@ jobs:
           body: |
             **Download `Swoop.zip`**, unzip it and drag Swoop into Applications. Works on macOS 13+ (Apple silicon and Intel).
 
-            Swoop isn't notarized yet, so the first time you open it macOS asks first. On macOS 15: System Settings → Privacy & Security → **Open Anyway**. On macOS 13–14: right-click Swoop → **Open**. Then allow Accessibility when asked, hold **Right ⌥** and flick the mouse.
+            Swoop isn't notarized yet, so the first time you open it macOS asks first. On macOS 15: System Settings → Privacy & Security → **Open Anyway**. On macOS 13–14: right-click Swoop → **Open**. Then allow Accessibility when asked, hold **Left ⌥ (Option)** and flick the mouse.

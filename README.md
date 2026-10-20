@@ -17,7 +17,7 @@ Hold a key, flick the mouse toward where a window should go, let go. Done.</p>
 
 ## Features
 
-- **Radial menu.** Hold the trigger key (Right ⌥ by default) and move the cursor in a direction. Release to snap the window there. It works without looking, and a ring at the cursor shows what you'll get.
+- **Radial menu.** Hold the trigger key (Left ⌥ by default) and move the cursor in a direction. Release to snap the window there. It works without looking, and a ring at the cursor shows what you'll get.
 - **Live preview.** An outline shows exactly where the window will land before you commit.
 - **Keyboard shortcuts.** Hold the trigger and press a key: ← → ↑ ↓ for halves, ↩ to maximize, C to centre, 1–4 for quarters, [ ] to change screens, and more. Every key can be rebound.
 - **Cycles.** Press the same key again, or click while holding the trigger, to step through a direction: Right Half → Right Third → Right Two Thirds.
@@ -35,13 +35,21 @@ Hold a key, flick the mouse toward where a window should go, let go. Done.</p>
 
 ## Install
 
+**Quickest:** paste this in Terminal. It downloads the latest release, puts Swoop in Applications and opens it, with no security popup:
+
+```bash
+curl -fsSL https://swoop-mac.vercel.app/install.sh | bash
+```
+
+**Or download it:**
+
 1. [Download Swoop.zip](https://github.com/iam8uman/swoop/releases/latest/download/Swoop.zip), unzip it, and drag **Swoop** into **Applications**.
-2. Open it. Swoop isn't notarized yet, so macOS will warn you the first time:
-   - **macOS 15+:** open **System Settings → Privacy & Security**, scroll down, and click **Open Anyway** next to Swoop.
-   - **macOS 13–14:** right-click Swoop → **Open** → **Open**.
-   - Or in Terminal: `xattr -dr com.apple.quarantine /Applications/Swoop.app`
-3. Allow **Accessibility** when asked (System Settings → Privacy & Security → Accessibility → Swoop).
-4. Hold **Right ⌥** and flick the mouse. 🎉
+2. Open it. macOS says *"Swoop.app" Not Opened*. Click **Done**. (Swoop isn't notarized by Apple yet.)
+3. Open **System Settings → Privacy & Security**, scroll down, and click **Open Anyway** next to Swoop. Confirm with your password and click **Open Anyway** again. On macOS 13–14 you can instead right-click Swoop → **Open**.
+4. Allow **Accessibility** when asked (System Settings → Privacy & Security → Accessibility → Swoop).
+5. Hold **Left ⌥ (Option)** and flick the mouse. 🎉
+
+The [website](https://swoop-mac.vercel.app/#install) shows each of these screens.
 
 ## Default controls
 

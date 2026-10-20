@@ -270,7 +270,7 @@ public struct PreviewTheme: Codable, Equatable, Sendable {
 
 public struct SwoopSettings: Codable, Equatable, Sendable {
     // Trigger
-    public var triggerKeys: Set<TriggerKey> = [.rightOption]
+    public var triggerKeys: Set<TriggerKey> = [.leftOption]
     /// Seconds the trigger must be held before the radial menu appears (keybinds work instantly).
     public var triggerDelay: Double = 0.15
     public var cursorSelection = true

@@ -79,6 +79,24 @@
     }
   }
 
+  // ---------- Copy buttons ----------
+  document.querySelectorAll("[data-copy]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const text = document.querySelector(btn.dataset.copy).textContent.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const r = document.createRange();
+        r.selectNodeContents(document.querySelector(btn.dataset.copy));
+        const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+        document.execCommand("copy");
+      }
+      btn.textContent = "Copied";
+      btn.classList.add("done");
+      setTimeout(() => { btn.textContent = "Copy"; btn.classList.remove("done"); }, 1800);
+    });
+  });
+
   // ---------- Latest release ----------
   fetch(`https://api.github.com/repos/${REPO}/releases/latest`)
     .then((r) => (r.ok ? r.json() : null))

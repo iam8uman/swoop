@@ -178,7 +178,7 @@ private struct TriggerTab: View {
             } header: {
                 Text("Trigger key")
             } footer: {
-                Text("Pick one key, or several to require them together. Left and right keys are separate, so Right ⌥ as the trigger keeps Left ⌥ free for typing. Using 🌐? Set System Settings → Keyboard → “Press 🌐 key to” → Do Nothing. Want Caps Lock? Remap it to Control in System Settings → Keyboard → Modifier Keys, then choose Right Control here — or use Hyperkey / Karabiner-Elements.")
+                Text("Pick one key, or several to require them together. Left and right keys are separate. With Left ⌥, Swoop's shortcut keys (arrows, C, F…) act on windows while it's held; pick Right ⌥ or 🌐 if you'd rather keep ⌥ for typing. Using 🌐? Set System Settings → Keyboard → “Press 🌐 key to” → Do Nothing. Want Caps Lock? Remap it to Control in System Settings → Keyboard → Modifier Keys, then choose Right Control here — or use Hyperkey / Karabiner-Elements.")
             }
 
             Section("Behaviour") {

@@ -32,7 +32,7 @@
       <a href="#how">How it works</a>
       <a href="#layouts">Layouts</a>
       <a href="#keys">Shortcuts</a>
-      <a href="#automation">Automation</a>
+      <a href="#install">Install</a>
       <a href="#faq">FAQ</a>
       <a href="https://github.com/iam8uman/swoop" rel="noopener">GitHub</a>
     </nav>
@@ -49,7 +49,7 @@
             <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Download for Mac
           </a>
-          <p class="fine"><span data-version>Free and open source</span>. macOS 13 or later, Apple silicon and Intel.</p>
+          <p class="fine"><span data-version>Free and open source</span>. macOS 13 or later, Apple silicon and Intel. <a href="#install">Install guide</a></p>
         </div>
       </div>
 
@@ -106,7 +106,7 @@ $ <span class="caret"></span></pre>
       <ol class="steps">
         <li>
           <h3>Hold</h3>
-          <p>Hold your trigger key (Right ⌥ out of the box). A ring appears right under your cursor, so your eyes never leave your work.</p>
+          <p>Hold your trigger key (Left ⌥ Option out of the box). A ring appears right under your cursor, so your eyes never leave your work.</p>
         </li>
         <li>
           <h3>Flick</h3>
@@ -183,21 +183,88 @@ open -g "swoop://custom/Writing%20Mode"
     </section>
 
     <section class="install" id="install" aria-labelledby="install-title">
-      <h2 id="install-title">Install in a minute</h2>
-      <ol class="steps install-steps">
+      <div class="section-head">
+        <h2 id="install-title">Install in a minute</h2>
+        <p>Two ways to get Swoop. The one-liner is the quickest. The download takes a few extra clicks the first time, and every one is shown below so nothing catches you off guard.</p>
+      </div>
+
+      <div class="install-ways">
+        <div class="way way-fast">
+          <h3>Quickest: one line in Terminal</h3>
+          <p>Open Terminal, paste this and press Return. It downloads the latest Swoop from GitHub, puts it in Applications and opens it, with no security popup.</p>
+          <div class="copy-line">
+            <code id="install-cmd">curl -fsSL https://swoop-mac.vercel.app/install.sh | bash</code>
+            <button type="button" class="copy" data-copy="#install-cmd">Copy</button>
+          </div>
+          <p class="fine">Curious what it runs? <a href="install.sh">Read the script</a>. It's 40 lines.</p>
+        </div>
+        <div class="way">
+          <h3>Or download the app</h3>
+          <p><a href="https://github.com/iam8uman/swoop/releases/latest/download/Swoop.zip" data-download>Download Swoop.zip</a>, unzip it and drag <b>Swoop</b> into <b>Applications</b>. Then follow the steps below the first time you open it.</p>
+        </div>
+      </div>
+
+      <ol class="walkthrough">
         <li>
-          <h3>Download and drag</h3>
-          <p><a href="https://github.com/iam8uman/swoop/releases/latest/download/Swoop.zip" data-download>Download Swoop.zip</a>, unzip it, and move Swoop into Applications.</p>
+          <div class="shot" aria-hidden="true">
+            <div class="mac-dialog">
+              <div class="md-icon"></div>
+              <b>“Swoop.app” Not Opened</b>
+              <span>Apple could not verify “Swoop.app”…</span>
+              <i class="md-btn">Move to Trash</i>
+              <i class="md-btn md-pick">Done</i>
+            </div>
+          </div>
+          <h3>Click Done</h3>
+          <p>The first time you open Swoop, macOS shows this. It's normal for free apps outside the App Store. Click <b>Done</b>, not Move to Trash.</p>
         </li>
         <li>
-          <h3>Open it once</h3>
-          <p>Swoop isn't notarized by Apple yet, so macOS asks first. On macOS 15, open System Settings → Privacy &amp; Security and click <b>Open Anyway</b>. On macOS 13 or 14, right-click Swoop and choose <b>Open</b>.</p>
+          <div class="shot" aria-hidden="true">
+            <div class="mac-pane">
+              <small>Privacy &amp; Security</small>
+              <div class="mp-row"><span>“Swoop.app” was blocked to protect your Mac.</span><i class="md-btn md-pick">Open Anyway</i></div>
+            </div>
+          </div>
+          <h3>Open Anyway</h3>
+          <p>Go to <b>System Settings → Privacy &amp; Security</b> and scroll to the bottom. Click <b>Open Anyway</b> next to Swoop. On macOS 13 or 14 you can instead right-click Swoop and choose <b>Open</b>.</p>
         </li>
         <li>
+          <div class="shot" aria-hidden="true">
+            <div class="mac-dialog small">
+              <div class="md-touch"></div>
+              <b>Open “Swoop.app”?</b>
+              <i class="md-btn md-pick">Open Anyway</i>
+            </div>
+          </div>
+          <h3>Confirm</h3>
+          <p>Enter your password or use Touch ID, then click <b>Open Anyway</b> once more. You only do this once. Swoop opens normally from then on.</p>
+        </li>
+        <li>
+          <div class="shot" aria-hidden="true">
+            <div class="mac-pane">
+              <small>Accessibility</small>
+              <div class="mp-row"><span class="mp-app"><img src="favicon.png" alt="" width="18" height="18">Swoop.app</span><i class="toggle on"></i></div>
+            </div>
+          </div>
           <h3>Allow Accessibility</h3>
-          <p>Turn Swoop on in System Settings → Privacy &amp; Security → Accessibility. That's the only permission it needs.</p>
+          <p>Swoop asks to control windows. Turn <b>Swoop</b> on in <b>System Settings → Privacy &amp; Security → Accessibility</b>. Swoop notices right away, so there's no need to restart it.</p>
+        </li>
+        <li>
+          <div class="shot" aria-hidden="true">
+            <div class="flick-hint">
+              <kbd>⌥</kbd>
+              <span class="flick-ring"></span>
+            </div>
+          </div>
+          <h3>Hold Left ⌥ and flick</h3>
+          <p>Click any window, hold the <b>Option</b> key to the left of the spacebar, move the mouse toward where the window should go, and let go. That's it.</p>
         </li>
       </ol>
+
+      <div class="why-warning">
+        <h3>Why does macOS warn about Swoop?</h3>
+        <p>Apple only skips that popup for apps notarized through its $99-a-year developer program, which Swoop hasn't joined yet. The warning doesn't mean anything was found. Swoop is open source, so every line is <a href="https://github.com/iam8uman/swoop">on GitHub</a>, and each release is built in public by GitHub Actions. It never connects to the internet, collects nothing, and asks for one permission: Accessibility, the same one every window manager needs.</p>
+      </div>
     </section>
 
     <section class="faq" id="faq" aria-labelledby="faq-title">
@@ -212,7 +279,7 @@ open -g "swoop://custom/Writing%20Mode"
       </details>
       <details>
         <summary>Will holding Option break typing special characters?</summary>
-        <p>No. If you press a key that isn't a Swoop shortcut, Swoop steps aside and the key goes through as normal. The ring also waits a moment before appearing. You can switch the trigger to Fn, Right ⌘, Right ⌃ or a combination.</p>
+        <p>Mostly no. Keys that aren't Swoop shortcuts go through as normal, so ⌥ + E, U, N and friends still type accents. While Left ⌥ is held, Swoop's own shortcut keys (arrows, C, F, Z and a few others) move windows instead, so ⌥ + ← no longer jumps a word. If you use those a lot, switch the trigger to Right ⌥ or the 🌐 Fn key in Settings → Trigger.</p>
       </details>
       <details>
         <summary>Can I use Caps Lock as the trigger?</summary>
@@ -223,8 +290,12 @@ open -g "swoop://custom/Writing%20Mode"
         <p>Yes. Layouts apply to whichever display the window is on, and screen actions move windows between displays while keeping their layout.</p>
       </details>
       <details>
-        <summary>macOS asked for Accessibility again after an update.</summary>
-        <p>Builds aren't signed with an Apple Developer ID yet, so macOS can treat a new version as a new app. Remove Swoop from the Accessibility list with the − button and add it again.</p>
+        <summary>How do I update Swoop?</summary>
+        <p>Run the one-line installer again, or download the new zip and replace the app in Applications. Because builds aren't signed with an Apple Developer ID yet, macOS may treat the new version as a new app: if the shortcuts stop working, switch Swoop off and on again in System Settings → Privacy &amp; Security → Accessibility.</p>
+      </details>
+      <details>
+        <summary>How do I uninstall it?</summary>
+        <p>Quit Swoop from its menu bar icon and drag it from Applications to the Trash. That's everything. Optionally remove it from the Accessibility list too.</p>
       </details>
     </section>
 

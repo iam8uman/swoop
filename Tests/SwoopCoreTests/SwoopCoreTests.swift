@@ -173,7 +173,7 @@ final class SettingsTests: XCTestCase {
         """
         let s = try JSONDecoder().decode(SwoopSettings.self, from: Data(json.utf8))
         XCTAssertEqual(s.padding, 20)
-        XCTAssertEqual(s.triggerKeys, [.rightOption]) // fell back to default
+        XCTAssertEqual(s.triggerKeys, [.leftOption]) // fell back to default
         XCTAssertEqual(s.keybinds.count, 1)
         XCTAssertEqual(s.keybinds[0].actions, [.builtin(.rightHalf)])
         XCTAssertEqual(s.radialActions, SwoopSettings.defaultRadialActions)
