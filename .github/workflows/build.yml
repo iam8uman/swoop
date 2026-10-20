@@ -14,13 +14,29 @@ jobs:
   build:
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Show toolchain
         run: swift --version
 
+      - name: Compile
+        run: |
+          set -o pipefail
+          swift build --build-tests 2>&1 | tee compile.log || {
+            # Report every compiler error in one annotation so it's readable from the API.
+            grep -E "error:" compile.log | sed "s#$GITHUB_WORKSPACE/##" | sort -u | head -80 > errors.txt
+            echo "::error title=Compile errors::$(awk '{gsub(/%/,"%25"); printf "%s%%0A", $0}' errors.txt)"
+            exit 1
+          }
+
       - name: Unit tests
-        run: swift test
+        run: |
+          set -o pipefail
+          swift test --skip-build 2>&1 | tee test.log || {
+            grep -E "error|failed" test.log | sort -u | head -60 > failures.txt
+            echo "::error title=Test failures::$(awk '{gsub(/%/,"%25"); printf "%s%%0A", $0}' failures.txt)"
+            exit 1
+          }
 
       - name: Build Swoop.app
         run: |
