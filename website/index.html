@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Swoop: flick windows into place on your Mac</title>
-  <meta name="description" content="Swoop is a free, open-source window manager for macOS. Hold a key, flick the mouse toward where a window should go, and let go. Halves, thirds, quarters, screens, stash, keyboard shortcuts and more.">
-  <meta name="theme-color" content="#ECEEF6">
+  <meta name="description" content="Swoop is a free, open-source window manager for macOS. Hold Option, flick the mouse toward where a window should go, and let go. Halves, thirds, quarters, other screens and keyboard shortcuts.">
+  <meta name="theme-color" content="#2C001E">
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta property="og:title" content="Swoop: flick windows into place">
-  <meta property="og:description" content="Free, open-source radial window manager for macOS. Hold a key, flick, done.">
+  <meta property="og:description" content="Free, open-source window manager for macOS. Hold Option, flick, done.">
   <meta property="og:image" content="https://swoop-mac.vercel.app/og.png">
   <meta property="og:url" content="https://swoop-mac.vercel.app/">
   <link rel="canonical" href="https://swoop-mac.vercel.app/">
@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -43,14 +43,15 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
         <h1 id="hero-title">Flick windows<br>into place.</h1>
-        <p class="lede">Hold a key, flick the mouse toward where a window should go, let go. Swoop is a free, open-source window manager for macOS that you can use without looking.</p>
+        <p class="lede">Hold Option, flick the mouse toward where a window should go, and let go. Swoop is a free, open-source window manager for macOS that you can use without looking.</p>
         <div class="cta">
           <a class="button" href="https://github.com/iam8uman/swoop/releases/latest/download/Swoop.zip" data-download>
             <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Download for Mac
           </a>
-          <p class="fine"><span data-version>Free and open source</span>. macOS 13 or later, Apple silicon and Intel. <a href="#install">Install guide</a></p>
+          <a class="button ghost-button" href="#install">Install guide</a>
         </div>
+        <p class="fine"><span data-version>Free and open source</span>. macOS 13 or later, Apple silicon and Intel.</p>
       </div>
 
       <!-- The live demo: a tilted Mac you can actually use. -->
@@ -81,7 +82,7 @@ $ <span class="caret"></span></pre>
               <div class="bar"><i></i><i></i><i></i><span>Ideas</span></div>
               <div class="body notes">
                 <p class="n-title">Launch checklist</p>
-                <p>☑ Ship v1.0</p><p>☑ Landing page</p><p>☐ Post on X</p><p>☐ Coffee</p>
+                <p>☑ Ship v1.0</p><p>☑ Landing page</p><p>☐ Post on X</p><p>☐ Chiya</p>
               </div>
             </div>
             <div class="preview" hidden></div>
@@ -94,9 +95,9 @@ $ <span class="caret"></span></pre>
           </div>
           <div class="dock" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
         </div>
-        <p class="demo-help" id="demo-help">
-          <span class="desk-only">Hold <kbd>⌥ Option</kbd> and move your mouse, then let go. Click while holding to cycle.</span>
-          <span class="touch-only">Press and hold the screen, slide toward a spot, then lift.</span>
+        <p class="demo-help">
+          <span class="desk-only">Try it: hold <kbd>⌥ Option</kbd> and move your mouse, then let go. Click while holding to cycle.</span>
+          <span class="touch-only">Try it: press and hold the screen, slide toward a spot, then lift.</span>
         </p>
       </div>
     </section>
@@ -106,7 +107,7 @@ $ <span class="caret"></span></pre>
       <ol class="steps">
         <li>
           <h3>Hold</h3>
-          <p>Hold your trigger key (Left ⌥ Option out of the box). A ring appears right under your cursor, so your eyes never leave your work.</p>
+          <p>Hold Left ⌥ Option. A ring appears right under your cursor, so your eyes never leave your work.</p>
         </li>
         <li>
           <h3>Flick</h3>
@@ -114,7 +115,7 @@ $ <span class="caret"></span></pre>
         </li>
         <li>
           <h3>Release</h3>
-          <p>Let go and the window swoops into place. Esc or right-click cancels. Typing with the key held still works exactly as before.</p>
+          <p>Let go and the window swoops into place. Esc or right-click cancels.</p>
         </li>
       </ol>
     </section>
@@ -122,22 +123,22 @@ $ <span class="caret"></span></pre>
     <section class="install" id="install" aria-labelledby="install-title">
       <div class="section-head">
         <h2 id="install-title">Install in a minute</h2>
-        <p>Two ways to get Swoop. The one-liner is the quickest. The download takes a few extra clicks the first time, and every one is shown below so nothing catches you off guard.</p>
+        <p>The one-liner is the quickest. The download takes a few extra clicks the first time, and each one is shown below.</p>
       </div>
 
       <div class="install-ways">
         <div class="way way-fast">
           <h3>Quickest: one line in Terminal</h3>
-          <p>Open Terminal, paste this and press Return. It downloads the latest Swoop from GitHub, puts it in Applications and opens it, with no security popup.</p>
+          <p>Paste this into Terminal and press Return. It puts the latest Swoop in Applications and opens it, with no security popup.</p>
           <div class="copy-line">
             <code id="install-cmd">curl -fsSL https://swoop-mac.vercel.app/install.sh | bash</code>
             <button type="button" class="copy" data-copy="#install-cmd">Copy</button>
           </div>
-          <p class="fine">Curious what it runs? <a href="install.sh">Read the script</a>. It's 40 lines.</p>
+          <p class="fine">Want to check it first? <a href="install.sh">Read the script</a>, it's 40 lines.</p>
         </div>
         <div class="way">
           <h3>Or download the app</h3>
-          <p><a href="https://github.com/iam8uman/swoop/releases/latest/download/Swoop.zip" data-download>Download Swoop.zip</a>, unzip it and drag <b>Swoop</b> into <b>Applications</b>. Then follow the steps below the first time you open it.</p>
+          <p><a href="https://github.com/iam8uman/swoop/releases/latest/download/Swoop.zip" data-download>Download Swoop.zip</a>, unzip it and drag <b>Swoop</b> into <b>Applications</b>. Then follow these steps the first time you open it.</p>
         </div>
       </div>
 
@@ -153,7 +154,7 @@ $ <span class="caret"></span></pre>
             </div>
           </div>
           <h3>Click Done</h3>
-          <p>The first time you open Swoop, macOS shows this. It's normal for free apps outside the App Store. Click <b>Done</b>, not Move to Trash.</p>
+          <p>macOS shows this the first time. It's normal for free apps outside the App Store. Click <b>Done</b>, not Move to Trash.</p>
         </li>
         <li>
           <div class="shot" aria-hidden="true">
@@ -163,7 +164,7 @@ $ <span class="caret"></span></pre>
             </div>
           </div>
           <h3>Open Anyway</h3>
-          <p>Go to <b>System Settings → Privacy &amp; Security</b> and scroll to the bottom. Click <b>Open Anyway</b> next to Swoop. On macOS 13 or 14 you can instead right-click Swoop and choose <b>Open</b>.</p>
+          <p>Open <b>System Settings → Privacy &amp; Security</b>, scroll to the bottom and click <b>Open Anyway</b>. On macOS 13 or 14 you can right-click Swoop and choose <b>Open</b> instead.</p>
         </li>
         <li>
           <div class="shot" aria-hidden="true">
@@ -174,7 +175,7 @@ $ <span class="caret"></span></pre>
             </div>
           </div>
           <h3>Confirm</h3>
-          <p>Enter your password or use Touch ID, then click <b>Open Anyway</b> once more. You only do this once. Swoop opens normally from then on.</p>
+          <p>Use your password or Touch ID, then click <b>Open Anyway</b> again. You only do this once.</p>
         </li>
         <li>
           <div class="shot" aria-hidden="true">
@@ -184,7 +185,7 @@ $ <span class="caret"></span></pre>
             </div>
           </div>
           <h3>Allow Accessibility</h3>
-          <p>Swoop asks to control windows. Turn <b>Swoop</b> on in <b>System Settings → Privacy &amp; Security → Accessibility</b>. Swoop notices right away, so there's no need to restart it.</p>
+          <p>When Swoop asks, turn it on in <b>Privacy &amp; Security → Accessibility</b>. No restart needed.</p>
         </li>
         <li>
           <div class="shot" aria-hidden="true">
@@ -193,122 +194,83 @@ $ <span class="caret"></span></pre>
               <span class="flick-ring"></span>
             </div>
           </div>
-          <h3>Hold Left ⌥ and flick</h3>
-          <p>Click any window, hold the <b>Option</b> key to the left of the spacebar, move the mouse toward where the window should go, and let go. That's it.</p>
+          <h3>Hold ⌥ and flick</h3>
+          <p>Click any window, hold the <b>Option</b> key left of the spacebar, move the mouse where the window should go, and let go.</p>
         </li>
       </ol>
 
-      <div class="why-warning">
-        <h3>Why does macOS warn about Swoop?</h3>
-        <p>Apple only skips that popup for apps notarized through its $99-a-year developer program, which Swoop hasn't joined yet. The warning doesn't mean anything was found. Swoop is open source, so every line is <a href="https://github.com/iam8uman/swoop">on GitHub</a>, and each release is built in public by GitHub Actions. It never connects to the internet, collects nothing, and asks for one permission: Accessibility, the same one every window manager needs.</p>
-      </div>
+      <p class="why-warning"><b>Why the warning?</b> Apple only skips that popup for apps in its $99-a-year developer program, which Swoop hasn't joined yet. It doesn't mean anything was found. Every line of Swoop is <a href="https://github.com/iam8uman/swoop">on GitHub</a>, each release is built in public, it never goes online, and it asks for one permission: Accessibility.</p>
     </section>
 
     <section class="layouts" id="layouts" aria-labelledby="layouts-title">
       <div class="section-head">
         <h2 id="layouts-title">Every layout, one flick or keypress away</h2>
-        <p>Put any of these on any direction of the ring or on any key. Or draw your own custom layouts.</p>
+        <p>Put any of these on any direction of the ring or on any key, or make your own.</p>
       </div>
       <div class="catalogue" id="catalogue"></div>
       <ul class="extras">
-        <li><b>Screens.</b> Next, previous, left, right, top or bottom display. Windows keep their layout, and the cursor comes along.</li>
-        <li><b>Stash.</b> Tuck a window behind the screen edge. Push the cursor against the edge and it slides back out.</li>
-        <li><b>Resize and move.</b> Larger, smaller, grow or shrink any edge, nudge in any direction.</li>
-        <li><b>Undo.</b> Step back through a window's last positions, or return it to where it started.</li>
+        <li><b>Screens.</b> Send a window to the next display. It keeps its layout and the cursor comes along.</li>
+        <li><b>Stash.</b> Tuck a window behind the screen edge. Push the cursor against the edge to slide it back.</li>
+        <li><b>Resize and nudge.</b> Larger, smaller, grow or shrink any edge, move in any direction.</li>
+        <li><b>Undo.</b> Step back through a window's last positions.</li>
       </ul>
     </section>
 
     <section class="keys" id="keys" aria-labelledby="keys-title">
       <div class="section-head">
-        <h2 id="keys-title">Prefer the keyboard? Hold the trigger and tap.</h2>
-        <p>Press the same key again to cycle. Every key can be rebound in Settings.</p>
+        <h2 id="keys-title">Prefer the keyboard? Hold ⌥ and tap.</h2>
+        <p>Press the same key again to cycle. Every key can be changed in Settings.</p>
       </div>
       <dl class="keylist">
         <div><dt><kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd></dt><dd>Halves, then thirds, then two thirds</dd></div>
         <div><dt><kbd>↩</kbd></dt><dd>Maximize, then almost maximize</dd></div>
-        <div><dt><kbd>C</kbd></dt><dd>Centre, then macOS centre</dd></div>
+        <div><dt><kbd>C</kbd></dt><dd>Centre</dd></div>
         <div><dt><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd></dt><dd>Quarters</dd></div>
         <div><dt><kbd>[</kbd><kbd>]</kbd></dt><dd>Previous and next screen</dd></div>
-        <div><dt><kbd>⇧</kbd><kbd>←</kbd></dt><dd>Move the window, any arrow</dd></div>
         <div><dt><kbd>=</kbd><kbd>−</kbd></dt><dd>Larger and smaller</dd></div>
         <div><dt><kbd>,</kbd><kbd>.</kbd><kbd>/</kbd></dt><dd>Stash left, stash right, unstash</dd></div>
-        <div><dt><kbd>F</kbd></dt><dd>Fullscreen</dd></div>
         <div><dt><kbd>Z</kbd></dt><dd>Undo</dd></div>
       </dl>
-    </section>
-
-    <section class="make-it-yours" aria-labelledby="yours-title">
-      <div class="section-head">
-        <h2 id="yours-title">Make it yours</h2>
-      </div>
-      <div class="yours">
-        <div class="swatches" aria-hidden="true">
-          <span style="--c:#0A84FF"></span><span style="--c:#BF5AF2"></span><span style="--c:#FF375F"></span><span style="--c:#FF9F0A"></span><span style="--c:#30D158"></span>
-        </div>
-        <p>The ring follows your macOS accent colour, or any colour you pick. Change its size, thickness and shape, the preview's padding, corners and border, the gap between windows, and the animation speed. Choose any trigger: Fn, either ⌥, ⌃, ⌘ or ⇧, or several together. Skip apps you never want moved. Export your setup and share it.</p>
-      </div>
-    </section>
-
-    <section class="automation" id="automation" aria-labelledby="auto-title">
-      <div class="section-head">
-        <h2 id="auto-title">Scriptable from anywhere</h2>
-        <p>Every action has a <code>swoop://</code> link. Use it from Terminal, Shortcuts, Raycast, Alfred or BetterTouchTool.</p>
-      </div>
-      <pre class="code"><code><span class="c"># one action</span>
-open -g "swoop://action/right-two-thirds"
-
-<span class="c"># chain a little routine</span>
-open -g "swoop://action/left-half" &amp;&amp; sleep 0.3 &amp;&amp; open -g "swoop://screen/next"
-
-<span class="c"># your own layouts, by name</span>
-open -g "swoop://custom/Writing%20Mode"
-
-<span class="c"># list every command</span>
-/Applications/Swoop.app/Contents/MacOS/Swoop --list</code></pre>
     </section>
 
     <section class="faq" id="faq" aria-labelledby="faq-title">
       <h2 id="faq-title">Questions</h2>
       <details>
         <summary>Is Swoop really free?</summary>
-        <p>Yes. It's open source under the MIT license. There's no account, no subscription and no telemetry. Swoop never touches the network.</p>
+        <p>Yes. It's open source under the MIT license, with no account, no subscription and no tracking. Swoop never connects to the internet.</p>
       </details>
       <details>
         <summary>Why does it need Accessibility permission?</summary>
-        <p>macOS only lets apps move and resize other apps' windows through the Accessibility API. Every window manager needs it. Swoop uses it for that and to watch your trigger key, nothing else. The source is on GitHub if you want to check.</p>
+        <p>macOS only lets apps move other apps' windows through Accessibility, so every window manager needs it. Swoop uses it for that and to notice your Option key, nothing else.</p>
       </details>
       <details>
-        <summary>Will holding Option break typing special characters?</summary>
-        <p>Mostly no. Keys that aren't Swoop shortcuts go through as normal, so ⌥ + E, U, N and friends still type accents. While Left ⌥ is held, Swoop's own shortcut keys (arrows, C, F, Z and a few others) move windows instead, so ⌥ + ← no longer jumps a word. If you use those a lot, switch the trigger to Right ⌥ or the 🌐 Fn key in Settings → Trigger.</p>
+        <summary>Will holding Option get in the way of typing?</summary>
+        <p>Keys that aren't Swoop shortcuts type as normal, so ⌥ + E or ⌥ + U still make accents. While Option is held, Swoop's own keys (arrows, C, Z and a few more) move windows instead, so ⌥ + ← won't jump a word. If you use that a lot, switch the trigger to Right ⌥ or the 🌐 key in Settings → Trigger.</p>
       </details>
       <details>
-        <summary>Can I use Caps Lock as the trigger?</summary>
-        <p>Yes. Remap Caps Lock to Control in System Settings → Keyboard → Modifier Keys, then pick Right Control in Swoop. You can also use Hyperkey or Karabiner-Elements.</p>
+        <summary>Can I change how it looks or which key triggers it?</summary>
+        <p>Yes. Settings lets you pick the trigger key, the ring's size, shape and colour (it follows your macOS accent colour by default), the gap between windows, animation speed, and apps Swoop should ignore. You can also add your own layouts.</p>
       </details>
       <details>
-        <summary>Does it work with multiple displays?</summary>
-        <p>Yes. Layouts apply to whichever display the window is on, and screen actions move windows between displays while keeping their layout.</p>
+        <summary>Can I control it from scripts, Shortcuts or Raycast?</summary>
+        <p>Every action has a link, for example <code>open -g "swoop://action/right-half"</code> or <code>swoop://screen/next</code>. Run <code>/Applications/Swoop.app/Contents/MacOS/Swoop --list</code> to see them all.</p>
       </details>
       <details>
-        <summary>How do I update Swoop?</summary>
-        <p>Run the one-line installer again, or download the new zip and replace the app in Applications. Because builds aren't signed with an Apple Developer ID yet, macOS may treat the new version as a new app: if the shortcuts stop working, switch Swoop off and on again in System Settings → Privacy &amp; Security → Accessibility.</p>
-      </details>
-      <details>
-        <summary>How do I uninstall it?</summary>
-        <p>Quit Swoop from its menu bar icon and drag it from Applications to the Trash. That's everything. Optionally remove it from the Accessibility list too.</p>
+        <summary>How do I update or uninstall it?</summary>
+        <p>To update, run the one-line installer again or replace the app with a new download. If shortcuts stop working after an update, switch Swoop off and on in Privacy &amp; Security → Accessibility. To uninstall, quit Swoop from its menu bar icon and move it to the Trash.</p>
       </details>
     </section>
 
     <section class="final" aria-labelledby="final-title">
-      <img src="icon.png" alt="Swoop app icon" width="120" height="120">
+      <img src="icon.png" alt="Swoop app icon" width="112" height="112">
       <h2 id="final-title">Stop dragging windows around.</h2>
       <a class="button" href="https://github.com/iam8uman/swoop/releases/latest/download/Swoop.zip" data-download>Download for Mac</a>
-      <p class="fine">Or build it yourself from <a href="https://github.com/iam8uman/swoop">the source on GitHub</a>.</p>
+      <p class="fine">Free and open source. <a href="https://github.com/iam8uman/swoop">Star it on GitHub</a> or tell me what to build next.</p>
     </section>
   </main>
 
   <footer class="foot">
-    <p>Swoop is made by <a href="https://github.com/iam8uman">Suman Sharma</a> and released under the MIT license.</p>
+    <p>Made in Nepal by <a href="https://github.com/iam8uman">Suman Sharma</a>. MIT license.</p>
     <p class="credit">Inspired by radial window managers like Loop. Independent code.</p>
   </footer>
 

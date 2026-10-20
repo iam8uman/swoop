@@ -4,14 +4,20 @@
 
 <h1 align="center">Swoop</h1>
 
-<p align="center"><b>Window management with a flick.</b><br>
-Hold a key, flick the mouse toward where a window should go, let go. Done.</p>
+<p align="center"><b>Flick windows into place.</b><br>
+Hold Option, flick the mouse toward where a window should go, and let go.</p>
 
 <p align="center">
   <a href="https://github.com/iam8uman/swoop/releases/latest/download/Swoop.zip"><b>Download for macOS</b></a> ·
   <a href="https://swoop-mac.vercel.app">Website</a> ·
-  macOS 13+ · Apple silicon & Intel · Free & open source (MIT)
+  <a href="https://swoop-mac.vercel.app/#install">Install guide</a><br>
+  macOS 13+ · Apple silicon &amp; Intel · Free &amp; open source (MIT)
 </p>
+
+<p align="center">
+  <img src="docs/demo.gif" width="880" alt="Swoop demo: holding Option shows a ring at the cursor; flicking toward a direction snaps the window to that half, third or quarter.">
+</p>
+<p align="center"><sub>Same demo as on the <a href="https://swoop-mac.vercel.app">website</a>, where you can try it yourself. <a href="docs/demo.mp4">MP4 version</a>.</sub></p>
 
 ---
 
