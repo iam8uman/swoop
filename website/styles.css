@@ -348,11 +348,12 @@ h3 { margin: 0 0 6px; font-size: 24px; font-weight: 700; letter-spacing: -0.01em
 /* ---------- Install ---------- */
 .install-ways { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; margin-bottom: 48px; }
 .install-ways > * { min-width: 0; }
-.way { padding: 28px; border-radius: var(--radius-lg); background: var(--paper); border: 1px solid var(--line); }
+.way { padding: 28px 4px; }
+.way-fast { padding: 28px; border-radius: var(--radius-lg); }
 .way h3 { font-size: 22px; margin-bottom: 8px; }
 .way p { margin: 0 0 16px; color: var(--ink-soft); max-width: 56ch; }
 .way p:last-child { margin-bottom: 0; }
-.way-fast { background: var(--ink); color: #E6E8FF; border-color: var(--ink); }
+.way-fast { background: var(--ink); color: #E6E8FF; }
 .way-fast h3 { color: #fff; }
 .way-fast p { color: #B9BCE6; }
 .way-fast a { color: var(--glow); }
@@ -407,14 +408,15 @@ h3 { margin: 0 0 6px; font-size: 24px; font-weight: 700; letter-spacing: -0.01em
 .flick-hint kbd { font-size: 28px; padding: .25em .6em; box-shadow: 0 4px 0 #9EA3C7; }
 .flick-ring { width: 76px; height: 76px; border-radius: 50%; border: 16px solid rgba(255,255,255,.28); border-right-color: var(--blue); }
 
-.why-warning { margin-top: 44px; padding: 26px 28px; border-radius: var(--radius-lg); background: var(--mist-2); max-width: 900px; }
+.why-warning { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); max-width: 900px; }
 .why-warning h3 { font-size: 20px; margin-bottom: 8px; }
 .why-warning p { margin: 0; color: var(--ink-soft); max-width: var(--measure); }
 
 @media (max-width: 900px) {
   .install-ways { grid-template-columns: 1fr; }
   .copy-line code { font-size: 13px; }
-  .way { padding: 22px; }
+  .way { padding: 8px 0 0; }
+  .way-fast { padding: 22px; }
 }
 
 /* ---------- Responsive ---------- */
