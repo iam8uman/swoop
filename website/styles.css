@@ -394,10 +394,80 @@ h3 { margin: 0 0 6px; font-size: 22px; font-weight: 500; letter-spacing: -0.01em
 .foot { max-width: 1440px; margin: 72px auto 0; padding: 26px clamp(16px, 4vw, 48px) 44px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 15px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
 .foot p { margin: 0; }
 
+
+/* ---------- Star on GitHub: liquid glass button ---------- */
+.gh-star {
+  position: relative; isolation: isolate;
+  display: inline-flex; align-items: center;
+  height: 36px; padding: 0 14px; margin-left: 4px;
+  border-radius: 10px; text-decoration: none; color: #fff;
+  font: 500 15px/1 var(--font); letter-spacing: .01em; white-space: nowrap;
+}
+.top nav + .gh-star { margin-left: 8px; }
+.gh-glow {
+  position: absolute; z-index: -2; left: 50%; top: 18%;
+  width: 112%; height: 125%; transform: translateX(-50%);
+  border-radius: 10px; overflow: hidden; filter: blur(16px); opacity: .7;
+}
+.gh-body {
+  position: absolute; z-index: -1; inset: 0;
+  border-radius: 10px; overflow: hidden; background: #010128;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.12) inset;
+}
+.liquid { position: absolute; inset: -40%; display: block; }
+.liquid i {
+  position: absolute; width: 70%; height: 70%; border-radius: 50%;
+  filter: blur(12px); mix-blend-mode: screen; opacity: .95;
+  animation: liquid 7s ease-in-out infinite alternate;
+}
+.liquid i:nth-child(1) { left: 0;   top: 10%; background: radial-gradient(circle, #0B06FC 0%, transparent 65%); }
+.liquid i:nth-child(2) { left: 35%; top: 30%; background: radial-gradient(circle, #4743EF 0%, transparent 65%); animation-duration: 9s; animation-delay: -3s; }
+.liquid i:nth-child(3) { left: 15%; top: 45%; background: radial-gradient(circle, #1E10C5 0%, transparent 65%); animation-duration: 6s; animation-delay: -1s; }
+.liquid i:nth-child(4) { left: 50%; top: 0;   background: radial-gradient(circle, #7D7BF4 0%, transparent 60%); animation-duration: 8s; animation-delay: -5s; opacity: .6; }
+.liquid i:nth-child(5) { left: 25%; top: 20%; background: radial-gradient(circle, #B6BAF6 0%, transparent 55%); animation-duration: 11s; animation-delay: -2s; opacity: .35; }
+@keyframes liquid {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(22%, -12%) scale(1.2); }
+  100% { transform: translate(-18%, 14%) scale(.9); }
+}
+.gh-shine {
+  position: absolute; inset: 0; border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255,255,255,.28), transparent 45%);
+  mix-blend-mode: overlay;
+}
+.gh-shine::after {
+  content: ""; position: absolute; left: 15%; right: 15%; top: 30%; height: 45%;
+  border-radius: 10px; background: #000066; filter: blur(12px); opacity: .55;
+}
+.gh-label { position: relative; display: inline-flex; align-items: center; gap: 8px; transition: color .2s; }
+.gh-label > svg { fill: currentColor; transition: fill .2s; }
+.gh-count {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 7px; margin-left: 2px; border-radius: 6px;
+  background: rgba(255,255,255,.14); font-size: 13px;
+}
+.gh-count svg { fill: currentColor; }
+.gh-count[hidden] { display: none; }
+.gh-star:hover { color: #FACC15; }
+.gh-star:hover .liquid i { animation-duration: 2.2s; }
+.gh-star:hover .gh-glow { opacity: .95; }
+.gh-star:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+@media (max-width: 900px) {
+  .top nav + .gh-star { margin-left: auto; padding: 0 12px; }
+  .top .gh-star + .button.small { margin-left: 0; }
+  .top { gap: 10px; }
+}
+@media (max-width: 520px) {
+  .gh-text { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .liquid i { animation: none; }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .top nav { display: none; }
-  .top .button.small { margin-left: auto; }
+  .top .button.small { margin-left: 10px; }
   .steps, .extras, .keylist, .install-ways { grid-template-columns: 1fr; }
   .steps { gap: 28px; }
   .keylist dt { width: 140px; }

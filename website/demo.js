@@ -97,6 +97,20 @@
     });
   });
 
+  // ---------- GitHub stars ----------
+  fetch(`https://api.github.com/repos/${REPO}`)
+    .then((r) => (r.ok ? r.json() : null))
+    .then((repo) => {
+      if (!repo || typeof repo.stargazers_count !== "number") return;
+      const n = repo.stargazers_count;
+      const text = n >= 1000 ? (n / 1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/, "") + "k" : String(n);
+      document.querySelectorAll("[data-stars]").forEach((el) => {
+        el.querySelector("span").textContent = text;
+        el.hidden = false;
+      });
+    })
+    .catch(() => {});
+
   // ---------- Latest release ----------
   fetch(`https://api.github.com/repos/${REPO}/releases/latest`)
     .then((r) => (r.ok ? r.json() : null))
