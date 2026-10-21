@@ -46,14 +46,22 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     // MARK: - Accessibility
 
     private func startWhenTrusted() {
-        if AX.isTrusted(prompt: true) {
+        if AX.isTrusted(prompt: false) {
+            Permission.rememberTrusted()
             startTrigger()
             return
         }
+        // After an update the old Accessibility entry points at the previous build and silently
+        // stops working. Clear it so macOS asks again for this build.
+        if Permission.isStaleAfterUpdate {
+            Permission.resetAccessibility()
+        }
+        _ = AX.isTrusted(prompt: true)
         permissionTimer?.invalidate()
         permissionTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
             guard AX.isTrusted(prompt: false) else { return }
             timer.invalidate()
+            Permission.rememberTrusted()
             self?.permissionTimer = nil
             self?.startTrigger()
         }
@@ -164,7 +172,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         menu.addItem(header)
 
         if !AX.isTrusted(prompt: false) {
-            menu.addItem(item("Grant Accessibility Permission…", #selector(grantPermission)))
+            menu.addItem(item("Fix Accessibility Permission…", #selector(grantPermission)))
         }
         menu.addItem(.separator())
 
@@ -224,6 +232,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
 
     @objc private func grantPermission() {
+        Permission.resetAccessibility()
         _ = AX.isTrusted(prompt: true)
         openAccessibilitySettings()
         startWhenTrusted()
@@ -240,6 +249,42 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     @objc private func quit() {
         NSApp.terminate(nil)
+    }
+}
+
+/// Keeps the Accessibility permission working across updates.
+/// Swoop builds are ad-hoc signed, so macOS treats each new build as a different app and an
+/// existing "on" toggle stops applying. Clearing Swoop's own entry makes macOS ask again.
+enum Permission {
+    private static let key = "SwoopTrustedBuild"
+    private static var currentBuild: String {
+        Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "dev"
+    }
+
+    static func rememberTrusted() {
+        UserDefaults.standard.set(currentBuild, forKey: key)
+    }
+
+    /// Swoop was allowed before, on a different build, and isn't allowed now.
+    static var isStaleAfterUpdate: Bool {
+        guard let previous = UserDefaults.standard.string(forKey: key) else { return false }
+        return previous != currentBuild
+    }
+
+    /// Removes Swoop's own Accessibility entry (no admin password needed).
+    static func resetAccessibility() {
+        guard let id = Bundle.main.bundleIdentifier else { return }
+        let task = Process()
+        task.executableURL = URL(fileURLWithPath: "/usr/bin/tccutil")
+        task.arguments = ["reset", "Accessibility", id]
+        task.standardOutput = FileHandle.nullDevice
+        task.standardError = FileHandle.nullDevice
+        do {
+            try task.run()
+            task.waitUntilExit()
+        } catch {
+            NSLog("Swoop: could not reset Accessibility permission: \(error)")
+        }
     }
 }
 

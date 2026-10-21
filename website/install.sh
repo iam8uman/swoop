@@ -35,11 +35,13 @@ ditto "$TMP/Swoop.app" "$DEST/Swoop.app"
 # This is what skips the "Apple could not verify" popup.
 xattr -dr com.apple.quarantine "$DEST/Swoop.app" 2>/dev/null || true
 
+# A new build needs a fresh Accessibility entry; the old one silently stops working.
+tccutil reset Accessibility com.iam8uman.swoop >/dev/null 2>&1 || true
+
 echo "✓ Installed to $DEST/Swoop.app"
 echo
 echo "Last step: when macOS asks, turn Swoop on in"
 echo "  System Settings → Privacy & Security → Accessibility"
-echo "(After an update, if shortcuts stop working, switch Swoop off and on again there.)"
 echo
 echo "Then hold Left ⌥ (Option) and flick your mouse. Enjoy!"
 

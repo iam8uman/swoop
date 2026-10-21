@@ -35,10 +35,16 @@ private struct GeneralTab: View {
                 HowToCard(triggerKeys: store.settings.triggerKeys)
                 if !trusted {
                     HStack {
-                        Label("Swoop needs Accessibility permission to move windows.", systemImage: "exclamationmark.triangle.fill")
-                            .foregroundStyle(.orange)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Label("Swoop needs Accessibility permission to move windows.", systemImage: "exclamationmark.triangle.fill")
+                                .foregroundStyle(.orange)
+                            Text("Already switched on? After an update macOS needs it again. Click Fix, then turn Swoop on.")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
                         Spacer()
-                        Button("Grant…") {
+                        Button("Fix…") {
+                            Permission.resetAccessibility()
                             _ = AX.isTrusted(prompt: true)
                             NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
                         }

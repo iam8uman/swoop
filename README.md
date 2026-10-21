@@ -127,7 +127,7 @@ website/            Landing page (static, deployed on Vercel)
 
 **Why does it need Accessibility?** macOS only lets apps move other apps' windows through the Accessibility API. Swoop uses it for that and nothing else.
 
-**Do I have to grant permission again after updating?** Builds aren't signed with a Developer ID yet, so macOS may ask again after an update. Remove Swoop from the Accessibility list and add it back.
+**Do I have to grant permission again after updating?** Yes, once. Builds aren't signed with a Developer ID yet, so macOS treats each update as a new app. Swoop (and the one-line installer) clears the old entry so macOS asks again; just turn Swoop back on. If it ever stops responding, choose **Fix Accessibility Permission…** from the menu bar icon, or run `tccutil reset Accessibility com.iam8uman.swoop` and reopen Swoop.
 
 **Can I use Caps Lock as the trigger?** Remap Caps Lock to Control in System Settings → Keyboard → Modifier Keys, then choose Right Control in Swoop. You can also use Hyperkey or Karabiner-Elements.
 
