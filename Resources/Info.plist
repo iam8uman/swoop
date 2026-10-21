@@ -28,6 +28,12 @@
     <true/>
     <key>NSHumanReadableCopyright</key>
     <string>© 2026 Suman Sharma. MIT License.</string>
+    <!-- RevenueCat: leave empty to ship Swoop free. Set a production public key (not test_)
+         and a Web Purchase Link to turn on the 14-day trial and lifetime license. -->
+    <key>RevenueCatAPIKey</key>
+    <string></string>
+    <key>RevenueCatWebPurchaseURL</key>
+    <string></string>
     <key>CFBundleURLTypes</key>
     <array>
         <dict>

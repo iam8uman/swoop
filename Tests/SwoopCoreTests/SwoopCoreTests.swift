@@ -203,3 +203,28 @@ final class StashTests: XCTestCase {
         XCTAssertTrue(StashGeometry.edgeIsFree(.left, screen: main, otherScreens: [external]))
     }
 }
+
+final class TrialTests: XCTestCase {
+    let start = Date(timeIntervalSince1970: 1_800_000_000)
+    let day: TimeInterval = 86_400
+
+    func testTrialCountsDown() {
+        XCTAssertEqual(TrialPolicy.status(trialStart: start, now: start, hasEntitlement: false), .trial(daysLeft: 14))
+        XCTAssertEqual(TrialPolicy.status(trialStart: start, now: start + day * 13.5, hasEntitlement: false), .trial(daysLeft: 1))
+        XCTAssertEqual(TrialPolicy.status(trialStart: start, now: start + day * 14, hasEntitlement: false), .expired)
+        XCTAssertFalse(LicenseStatus.expired.canUseSwoop)
+    }
+
+    func testLicenseWins() {
+        XCTAssertEqual(TrialPolicy.status(trialStart: start, now: start + day * 100, hasEntitlement: true), .licensed)
+    }
+
+    func testClockSetBackDoesNotExtend() {
+        XCTAssertEqual(TrialPolicy.status(trialStart: start, now: start - day * 30, hasEntitlement: false), .trial(daysLeft: 14))
+    }
+
+    func testDisabledLicensingIsFree() {
+        XCTAssertEqual(TrialPolicy.status(trialStart: start, now: start + day * 100, hasEntitlement: false, licensingEnabled: false), .free)
+        XCTAssertTrue(LicenseStatus.free.canUseSwoop)
+    }
+}

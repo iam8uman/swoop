@@ -66,6 +66,8 @@ final class WindowEngine {
     /// Runs an action on `window` (or the frontmost window). `completion` gets the frame the window
     /// actually ended up with, which apps with minimum sizes can make differ from the target.
     func perform(_ ref: ActionRef, on given: AXWindow? = nil, completion: ((AXWindow, CGRect?) -> Void)? = nil) {
+        // After the free trial, actions need a license.
+        guard LicenseManager.shared.allowAction() else { return }
         guard let window = given ?? AXWindow.frontmost() else {
             NSSound.beep()
             return

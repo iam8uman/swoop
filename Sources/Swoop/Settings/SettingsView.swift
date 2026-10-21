@@ -15,6 +15,7 @@ struct SettingsView: View {
             KeybindsTab().tabItem { Label("Keybinds", systemImage: "keyboard") }
             CustomLayoutsTab().tabItem { Label("Layouts", systemImage: "square.grid.3x3.square") }
             StashTab().tabItem { Label("Stash", systemImage: "sidebar.right") }
+            LicenseTab().tabItem { Label("License", systemImage: "checkmark.seal") }
             AboutTab().tabItem { Label("About", systemImage: "info.circle") }
         }
         .frame(minWidth: 760, minHeight: 600)
@@ -501,6 +502,55 @@ private struct StashTab: View {
             }
         }
         .formStyle(.grouped)
+    }
+}
+
+// MARK: - License
+
+private struct LicenseTab: View {
+    @ObservedObject private var license = LicenseManager.shared
+
+    var body: some View {
+        Form {
+            Section {
+                switch license.status {
+                case .free:
+                    Label("Swoop is free in this build.", systemImage: "gift")
+                case .licensed:
+                    Label("Lifetime license active on this Mac. Thank you!", systemImage: "checkmark.seal.fill")
+                        .foregroundStyle(.green)
+                case .trial(let days):
+                    Label(days == 1 ? "Free trial: last day" : "Free trial: \(days) days left", systemImage: "clock")
+                case .expired:
+                    Label("Your free trial has ended.", systemImage: "exclamationmark.circle.fill")
+                        .foregroundStyle(.orange)
+                }
+            } header: {
+                Text("License")
+            } footer: {
+                if license.status != .free {
+                    Text("One-time purchase of \(license.price). Includes future updates.")
+                }
+            }
+
+            if license.licensingEnabled && license.status != .licensed {
+                Section {
+                    HStack {
+                        Button("Buy Swoop (\(license.price))") { license.buy() }
+                            .buttonStyle(.borderedProminent)
+                            .disabled(license.isWorking)
+                        Button("Restore Purchase") { license.restore() }
+                            .disabled(license.isWorking)
+                        if license.isWorking { ProgressView().controlSize(.small) }
+                    }
+                    if let message = license.message {
+                        Text(message).font(.callout).foregroundStyle(.secondary)
+                    }
+                }
+            }
+        }
+        .formStyle(.grouped)
+        .onAppear { license.refresh() }
     }
 }
 

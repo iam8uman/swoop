@@ -23,6 +23,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     // MARK: - Lifecycle
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        LicenseManager.shared.start()
         setUpStatusItem()
         startWhenTrusted()
 
@@ -171,6 +172,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         header.isEnabled = false
         menu.addItem(header)
 
+        let license = LicenseManager.shared
+        if !license.statusLine.isEmpty {
+            let line = NSMenuItem(title: license.statusLine, action: nil, keyEquivalent: "")
+            line.isEnabled = false
+            menu.addItem(line)
+            if license.status != .licensed {
+                menu.addItem(item("Buy Swoop (\(license.price))…", #selector(showPaywall)))
+            }
+        }
+
         if !AX.isTrusted(prompt: false) {
             menu.addItem(item("Fix Accessibility Permission…", #selector(grantPermission)))
         }
@@ -223,6 +234,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
             WindowEngine.shared.perform(ref)
         }
+    }
+
+    @objc private func showPaywall() {
+        LicenseManager.shared.showPaywall()
     }
 
     @objc private func togglePause() {
