@@ -224,6 +224,12 @@ enum TrialClock {
     private static let account = "trialStart"
 
     static func startDate() -> Date {
+        #if DEBUG
+        // SWOOP_TRIAL_EXPIRED=1 swift run  → see the "trial ended" paywall right away.
+        if ProcessInfo.processInfo.environment["SWOOP_TRIAL_EXPIRED"] == "1" {
+            return Date().addingTimeInterval(-TrialPolicy.length - 60)
+        }
+        #endif
         if let stored = read() { return stored }
         let now = Date()
         write(now)

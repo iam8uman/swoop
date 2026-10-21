@@ -115,6 +115,13 @@ Releases are automatic. Bump `CFBundleShortVersionString` in `Resources/Info.pli
 
 The product requirements, design decisions and roadmap are in [docs/PRD.md](docs/PRD.md).
 
+### Licensing (RevenueCat)
+
+Swoop uses RevenueCat for a 14-day free trial and a one-time lifetime license (entitlement `swoop_pro`, product `swoop_lifetime`, offering `default`).
+
+- **Debug builds** (`swift run`) use the RevenueCat **Test Store**, so purchases are simulated. `SWOOP_TRIAL_EXPIRED=1 swift run` shows the "trial ended" screen immediately.
+- **Release builds** stay free until `RevenueCatAPIKey` (a production public key) and `RevenueCatWebPurchaseURL` (a RevenueCat Web Purchase Link) are set in `Resources/Info.plist`. Test Store keys are ignored in release builds, because RevenueCat crashes release builds that contain one.
+
 ### Project layout
 
 ```
